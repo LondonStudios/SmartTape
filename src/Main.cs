@@ -92,6 +92,8 @@ namespace Delta
                     oldObject = newObject;
                 }
                 MoveTape(id);
+                var networkId = ObjToNet(objects[id][0]);
+                SetNetworkIdExistsOnAllMachines(networkId, true);
             }  
         }
 
@@ -176,7 +178,6 @@ namespace Delta
                     SetEntityVisible(entity, false, false);
                     DeleteEntity(ref entity);
                     DisplayTopNotification("Tape deleted");
-
                     objects.Remove(index);
                     locations.Remove(index);
                     break;
@@ -200,6 +201,7 @@ namespace Delta
             objects[id].Add(objHandle);
             SetEntityCompletelyDisableCollision(objHandle, true, true);
             SetEntityCollision(objHandle, false, true);
+            
             return objHandle;
         }
 

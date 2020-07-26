@@ -91,20 +91,21 @@ namespace Delta
 
             newTape.OnItemSelect += (sender, item, index) =>
             {
+                var rnd = new Random();
                 if (item == policeTape)
                 {
                     Main.startPosition = GetEntityCoords(PlayerPedId(), true);
-                    Main.CalculateTape(Main.objects.Count(), GetHashKey("p_clothtarp_s"), length.Value);
+                    Main.CalculateTape(rnd.Next(1, 20000), GetHashKey("p_clothtarp_s"), length.Value);
                 }
                 else if (item == fireTape)
                 {
                     Main.startPosition = GetEntityCoords(PlayerPedId(), true);
-                    Main.CalculateTape(Main.objects.Count(), GetHashKey("prop_fire_tape"), length.Value);
+                    Main.CalculateTape(rnd.Next(1, 20000), GetHashKey("prop_fire_tape"), length.Value);
                 }
                 else if (item == innerCordonTape)
                 {
                     Main.startPosition = GetEntityCoords(PlayerPedId(), true);
-                    Main.CalculateTape(Main.objects.Count(), GetHashKey("prop_cordon_tape"), length.Value);
+                    Main.CalculateTape(rnd.Next(1, 20000), GetHashKey("prop_cordon_tape"), length.Value);
                 }
                 Toggle();
             };
