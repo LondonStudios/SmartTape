@@ -12,6 +12,7 @@ Join our discord [here](https://discord.gg/AtPt9ND).
 ## Usage
 **/tape** - Open or close the tape management menu.
 You can press **F10** (changeable) to open this menu.
+You can now change the default keybind used by all players.
 
 This command is configurable in Settings > Keybinds > FiveM. Every player can select their own keybind.
 
@@ -38,10 +39,12 @@ The "config.ini" file allows you to change the names of the tape that they appea
     Tape1 = Police Tape
     Tape2 = Inner Cordon Tape
     Tape3 = Fire Tape
+    Keybind = F10
 
 On **line 2**, you can change the name of the first tape.
 On **line 3**, you can change the name of the second tape.
 On **line 4**, you can change the name of the third tape.
+On **line 5**, you can change the default keybind for all players.
 
 You are not able to add more tapes at this time, we may add this in the near future!
 

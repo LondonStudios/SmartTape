@@ -24,6 +24,8 @@ namespace Delta
         public static string tape2Name = "Inner Cordon Tape";
         public static string tape3Name = "Fire Tape";
 
+        public static string defaultConfig = "F10";
+
         // Made by London Studios
         public Main()
         {
@@ -33,6 +35,11 @@ namespace Delta
             TriggerEvent("chat:addSuggestion", "/tape", "Opens the tape management menu");
             ReadConfig();
             RegisterKeyMapping("tape", "Opens the tape management menu", "KEYBOARD", "F10");
+        }
+
+        private void RegisterKeyConfig()
+        {
+            RegisterKeyMapping("tape", "Opens the tape management menu", "KEYBOARD", defaultConfig);
         }
 
         private async void Request(int model)
@@ -60,6 +67,8 @@ namespace Delta
                 tape1Name = loaded["SmartTape"]["Tape1"].StringValue;
                 tape2Name = loaded["SmartTape"]["Tape2"].StringValue;
                 tape3Name = loaded["SmartTape"]["Tape3"].StringValue;
+                defaultConfig = loaded["SmartTape"]["Keybind"].StringValue;
+                RegisterKeyConfig();
             }
         }
 
@@ -199,6 +208,7 @@ namespace Delta
             int objHandle = CreateObject(modelHash, startPosition.X, startPosition.Y, startPosition.Z, true, true, true);
             FreezeEntityPosition(objHandle, true);
             objects[id].Add(objHandle);
+            SetNetworkIdExistsOnAllMachines(ObjToNet(objHandle), true);
             SetEntityCompletelyDisableCollision(objHandle, true, true);
             SetEntityCollision(objHandle, false, true);
             
